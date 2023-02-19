@@ -23,7 +23,7 @@ class CreateDonasiKeluarsTable extends Migration
             $table->string('donasiOutUserUpdate')->nullable();
             $table->timestamps();
             $table->foreign('donasiOutJenisId')->references('id')->on('ref_jenis_donasi')->onDelete('cascade');
-            $table->foreign('donasiOutAsnafiId')->references('id')->on('ref_asnaf')->onDelete('cascade');
+            $table->foreign('donasiOutAsnafId')->references('id')->on('ref_asnaf')->onDelete('cascade');
         });
     }
 

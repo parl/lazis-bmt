@@ -38,7 +38,7 @@
                       </div>
                       <div class="form-group">
                         <label for="donasiNominal">Nominal Donasi</label>
-                        <input type="number" class="form-control" id="donasiNominal" name="donasiNominal" placeholder="Nominal Donasi">
+                        <input type="number" onkeyup="split" class="form-control" id="donasiNominal" name="donasiNominal" placeholder="Nominal Donasi">
                       </div>
                       <div class="form-group">
                         <label for="donasiTanggal">Tanggal Donasi</label>

@@ -38,7 +38,7 @@
                       </div>
                       <div class="form-group">
                         <label for="donasiOutNominal">Nominal Donasi</label>
-                        <input type="number" class="form-control" id="donasiOutNominal" name="donasiOutNominal" placeholder="Nominal Donasi">
+                        <input type="text" class="form-control" id="donasiOutNominal" name="donasiOutNominal" placeholder="Nominal Donasi">
                       </div>
                       <div class="form-group">
                         <label for="donasiOutTanggal">Tanggal Donasi</label>
@@ -91,26 +91,20 @@
     <script src="../../dist/js/main.js"></script>
     <!-- Page specific script -->
     <script>
-    function reverseNumber(input) {
-       return [].map.call(input, function(x) {
-          return x;
-        }).reverse().join(''); 
-    }
-      
-    function plainNumber(number) {
-         return number.split(',').join('');
-    }
-      
-    function splitInDots(input) {
-        
-        var value = input.value,
-            plain = plainNumber(value),
-            reversed = reverseNumber(plain),
-            reversedWithDots = reversed.match(/.{1,3}/g).join(','),
-            normal = reverseNumber(reversedWithDots);
-        
-        console.log(plain,reversed, reversedWithDots, normal);
-        input.value = normal;
+    function formatRupiah(input) {
+      // console.log(input.value);
+      let sisa = input.value.length % 3,
+        rupiah = input.value.substr(0, sisa),
+        ribuan = input.value.substr(sisa).match(/\d{3}/gi);
+
+      // tambahkan titik jika yang di input sudah menjadi angka ribuan
+      if (ribuan) {
+        separator = sisa ? "." : "";
+        rupiah += separator + ribuan.join(".");
+      }
+
+      input.value = rupiah;
+      console.log(rupiah);
     }
     $(function () {
       bsCustomFileInput.init();
